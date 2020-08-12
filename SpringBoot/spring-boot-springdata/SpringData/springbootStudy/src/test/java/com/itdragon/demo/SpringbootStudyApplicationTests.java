@@ -17,6 +17,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.domain.Sort.Order;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.itdragon.StartApplication;
@@ -58,7 +59,13 @@ public class SpringbootStudyApplicationTests {
 		user.setCreatedDate(ItdragonUtils.getCurrentDateTime());
 		user.setUpdatedDate(ItdragonUtils.getCurrentDateTime());
 		ItdragonUtils.entryptPassword(user);
-		userService.registerUser(user);
+		// int a = 10/0;
+		int[] a = new int[3];
+		a[0]=1;
+		a[1]=2;
+		a[2]=3;
+		// a[3]=4;
+		// userService.registerUser(user);
 	}
 	
 	@Test	// 测试SpringData 关键字
@@ -69,13 +76,13 @@ public class SpringbootStudyApplicationTests {
 	
 	@Test	// 测试SpringData @Query 注解和传多个参数
 	public void getActiveUserCount() {
-		long activeUserCount = userRepository.getActiveUserCount("weixin", ItdragonUtils.getCurrentDateTime());
+		long activeUserCount = userRepository.getActiveUserCount("github", ItdragonUtils.getCurrentDateTime());
 		System.out.println(activeUserCount);
 	}
 	
 	@Test	// 测试SpringData @Query 注解，传多个参数 和 like 查询
 	public void findByEmailAndIhpneLike() {
-		List<User> users = userRepository.findByEmailAndIhpneLike("163.com", "6666");
+		List<User> users = userRepository.findByEmailAndIhpneLike("qq.com", "1234");
 		System.out.println(users.toString());
 	}
 	
